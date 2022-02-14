@@ -14,13 +14,24 @@ const noticiasModel = require('./../models/noticiasModel');
 // -------------------------------RUTAS
 //localhost:3000/noticias/all
 router.get('/all', async (req,res,next) => {
-    let newsData = await noticiasModel.getNoticias();
-    res.render('noticias',{news: newsData }); //lleva al a vista noticias con parametro 'news'(las noticias)
+    try{
+        let newsData = await noticiasModel.getNoticias();
+        res.render('noticias',{news: newsData }); //lleva a la vista noticias con parametro 'news'(las noticias)
+    }catch(error){
+        throw error;
+    }
+    
 })
 
 //localhost:3000/noticias/1 parametro x url -->req.params
-router.get('/:id', (req, res, next) => {
-    console.log(req.params.id);
-    res.end();
+router.get('/:id', async (req, res, next) => {
+    try{
+        console.log(req.params.id);
+        let news = await noticiasModel.getNoticiaById(req.params.id);
+        res.render('noticia',{array_news: news}) //a la vista noticia le mando la info array_news
+    }catch(error){
+        console.log(error); 
+    }
+    
 })
 module.exports = router;
