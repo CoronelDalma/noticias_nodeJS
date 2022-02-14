@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row">
+        {{#each news}}
+        <div class="col-4">
+            <div class="card" style="width: 100%;">
+                <img src="/images/programmer.png" class="card-img-top" alt="programmer">
+                <div class="card-body">
+                    <h5 class="card-title">{{title}}</h5>
+                    <p class="card-text">{{description}}</p>
+                    <p class="card-text text-info">{{author}} | {{fechaForm}}</p> <!-- idem nombres en bd -->
+                    <a href="/noticias/{{idnoticia}}" class="btn btn-primary btn-block">Ver más</a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
