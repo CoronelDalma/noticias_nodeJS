@@ -12,4 +12,21 @@
         </div>
         {{/each}}
     </div>
+    <div class="row mt-5">
+        {{#if status}}
+        <div class="col-4">
+            <h5>Comentar</h5>
+            <form method="post" action="/noticias/comentar">
+                <div class="form-group">
+                    <textarea name="comentario" placeholder="Comentario"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+            </form>
+        </div>
+        {{else}}
+        <div class="col-4">
+            <a href="/login">Iniciar sesión</a>
+        </div>
+        {{/if}}
+    </div>
 </div>

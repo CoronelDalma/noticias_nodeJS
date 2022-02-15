@@ -26,9 +26,11 @@ router.get('/all', async (req,res,next) => {
 //localhost:3000/noticias/1 parametro x url -->req.params
 router.get('/:id', async (req, res, next) => {
     try{
-        console.log(req.params.id);
+        //console.log(req.params.id);
+        let status_session = false;
+        req.session.usuario ? status_session = true : status_session = false;
         let news = await noticiasModel.getNoticiaById(req.params.id);
-        res.render('noticia',{array_news: news}) //a la vista noticia le mando la info array_news
+        res.render('noticia',{array_news: news, status: status_session}) //a la vista noticia le mando la info array_news
     }catch(error){
         console.log(error); 
     }
